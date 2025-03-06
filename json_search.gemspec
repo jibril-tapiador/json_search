@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/jibril-tapiador/json_search'
   spec.license       = 'MIT'
 
-  spec.files         = Dir['lib/**/*', 'bin/*', 'README.md']
+  spec.files         = Dir['lib/**/*', 'bin/*', 'README.md', 'data/**/*', '*.gemspec']
   spec.executables   = ['json_search']
   spec.require_paths = ['lib']
 

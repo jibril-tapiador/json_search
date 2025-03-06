@@ -2,7 +2,7 @@ require 'optparse'
 
 module JsonSearch
   class CLI
-    DEFAULT_FILE = File.join(Dir.pwd, 'data', 'clients.json')
+    DEFAULT_FILE = File.join(Gem.loaded_specs["json_search"].full_gem_path, 'data', 'clients.json')
 
     def initialize(args = ARGV)
       @args = args
