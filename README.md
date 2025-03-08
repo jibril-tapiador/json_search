@@ -12,7 +12,7 @@ The gem is designed using clean, DRY, and object-oriented principles, and its mo
 - **Search Performance:**
   The current search functionality of this gem has a time complexity of `O(n)` (n = number of records), which is efficient for simple, one-off searches.
 
-  For frequent prefix searches on large datasets, a **trie (prefix tree)** could reduce the time complexity to `O(m)` (m = length of the prefix) but at the cost of additional complexity which is not required by the project.
+  For frequent prefix searches on large datasets, a **trie (prefix tree)** could reduce the time complexity to `O(m)` (m = length of the prefix) combined with a caching solution like **Redis** (`o(1)` for cached results) but at the cost of additional complexity which is not required by the project.
 
 ## Features
 
@@ -110,7 +110,7 @@ bundle exec rspec
   The app identifies duplicates solely by the `"email"` field. This meets the current requirements, though later we could extend this to include other fields if needed.
 
 - **Dataset Size and Performance:**
-  We assume the JSON file will be of a size where a simple linear search (`O(n)`) is sufficient. If the data grows much larger or searches become more  frequent, we might need a more efficient data structure—like a **trie** for prefix searches.
+  We assume the JSON file will be of a size where a simple linear search (`O(n)`) is sufficient. If the data grows much larger or searches become more  frequent, we might need a more efficient data structure—like a **trie** for prefix searches combined with a caching solution like **Redis**.
 
   Alternatively and ideally, integrating an RDBMS like PostgreSQL can offer a strong, scalable solution for managing and querying large data.
 
