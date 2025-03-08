@@ -12,7 +12,7 @@ The gem is designed using clean, DRY, and object-oriented principles, and its mo
 - **Search Performance:**
   The current search functionality of this gem has a time complexity of `O(n)` (n = number of records), which is efficient for simple, one-off searches.
 
-  For frequent prefix searches on large datasets, a **trie (prefix tree)** could reduce the time complexity to `O(m)` (m = length of the prefix) combined with a caching solution like **Redis** (`o(1)` for cached results) but at the cost of additional complexity which is not required by the project.
+  For frequent prefix searches on large datasets, a **trie (prefix tree)** can reduce time complexity to `O(m)` (m = prefix length), and caching with **Redis** (using a composite key from file metadata or hash) can offer `O(1)` lookups. These however are not yet needed for the current project.
 
 ## Features
 
