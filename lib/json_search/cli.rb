@@ -2,8 +2,6 @@ require 'optparse'
 
 module JsonSearch
   class CLI
-    DEFAULT_FILE = File.join(Gem.loaded_specs["json_search"].full_gem_path, 'data', 'clients.json')
-
     def initialize(args = ARGV)
       @args = args
       @options = {}
@@ -11,7 +9,7 @@ module JsonSearch
     end
 
     def run
-      file_path = @options[:file] || DEFAULT_FILE
+      file_path = @options[:file] || default_file
       repository = RecordRepository.new(file_path)
       records = repository.records
 
@@ -66,6 +64,14 @@ module JsonSearch
         duplicates.each do |group|
           group.each { |record| puts record.to_h }
         end
+      end
+    end
+
+    def default_file
+      if Gem.loaded_specs && Gem.loaded_specs['json_search']
+        File.join(Gem.loaded_specs['json_search'].full_gem_path, 'data', 'clients.json')
+      else
+        File.expand_path('../../data/clients.json', __dir__)
       end
     end
   end
